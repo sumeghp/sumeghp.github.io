@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumegh P. | Portfolio</title>
+    
+    <!-- 1. Tailwind CSS (Styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. React & ReactDOM (Core Library) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- 3. Babel (To understand JSX in the browser) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- 4. Lucide Icons (Icon Library) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Custom animation classes since we aren't using a full build system */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // We access React and Lucide from the global window object
+        const { useState, useEffect } = React;
+        
+        // Icon Component Helper (Since we can't import directly from lucide-react in this standalone file)
+        const Icon = ({ name, className }) => {
+            useEffect(() => {
+                lucide.createIcons();
+            }, [name]);
+            return <i data-lucide={name} className={className}></i>;
+        };
+
+        const App = () => {
+            const [activeTab, setActiveTab] = useState('home');
+
+            // Navigation Items
+            const navItems = [
+                { id: 'home', label: 'home', icon: 'microscope' },
+                { id: 'inquiries', label: 'inquiries', icon: 'book' },
+                { id: 'archive', label: 'archive', icon: 'file-text' },
+                { id: 'pedagogy', label: 'pedagogy', icon: 'graduation-cap' }
+            ];
+
+            // Content Components
+            const Home = () => (
+                <div className="space-y-12 animate-in">
+                    <section className="space-y-6">
+                        <h1 className="text-4xl md:text-5xl font-serif text-slate-900 leading-tight">
+                            Investigating the frictions between algorithmic logic and pedagogical practice.
+                        </h1>
+                        <div className="max-w-3xl text-lg text-slate-700 leading-relaxed font-light space-y-6">
+                            <p>
+                                Sumegh is an independent researcher and practitioner operating at the intersection of 
+                                <strong> socio-technical systems</strong>, <strong>Digital Humanities</strong>, and <strong>critical EdTech</strong>. 
+                                His work focuses on the ethical deployment of Digital Public Infrastructure (DPI) and the 
+                                complexities of scaling pedagogical innovations within marginalized contexts.
+                            </p>
+                            <p>
+                                With over seven years of immersive field experience, Sumegh investigates how data-driven 
+                                frameworks and algorithmic logic interact with local knowledge systems in the Global South. 
+                                A proponent of "Tech for Good," his research seeks to deconstruct the digital divide by 
+                                harmonizing elite institutional research with transformative, grassroots implementation. 
+                                He is particularly interested in the role of Community of Practice (CoP) and digital 
+                                micro-credentials in democratizing professional development, aiming to foster an 
+                                educational landscape that is both technologically advanced and socially just.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="pt-8 border-t border-slate-100">
+                        <h2 className="text-sm uppercase tracking-widest text-slate-400 mb-6 font-semibold tracking-[0.2em]">Core Research Inquiries</h2>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {[
+                                { title: "Digital Public Infrastructure", desc: "The ethical deployment of large-scale digital systems in public education." },
+                                { title: "Algorithmic Ethics", desc: "How data-driven decisions impact marginalized learners in resource-constrained environments." },
+                                { title: "Communities of Practice", desc: "Leveraging digital networks for democratized teacher professional development." },
+                                { title: "Knowledge Graphs", desc: "Using graph-based computation for advanced knowledge modeling in educational contexts." }
+                            ].map((item, i) => (
+                                <div key={i} className="group">
+                                    <h3 className="text-slate-900 font-medium mb-2 flex items-center gap-2">
+                                        <Icon name="chevron-right" className="w-3 h-3 text-slate-300 group-hover:text-slate-900 transition-colors" />
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+            );
+
+            const Inquiries = () => (
+                <div className="space-y-10 animate-in">
+                    <h2 className="text-3xl font-serif text-slate-900">Selected Implementations</h2>
+                    <div className="space-y-12">
+                        {[
+                            {
+                                title: "Scaling Digital Learning Frameworks",
+                                context: "Public Education Systems",
+                                description: "Implementation of technology-enabled professional development across 60+ government schools. This inquiry focused on the tension between centralized digital mandates and local classroom realities.",
+                                tags: ["Field Research", "DPI", "EdTech"]
+                            },
+                            {
+                                title: "Socio-Technical Network Analysis",
+                                context: "Graph Databases & Education",
+                                description: "Investigating the technical feasibility of migrating open-source knowledge projects to Neo4j. Developing visualizations to understand complex relational data in educational modeling.",
+                                tags: ["Neo4j", "Python", "Data Modeling"]
+                            },
+                            {
+                                title: "Digital Micro-credentials",
+                                context: "Teacher Professional Development",
+                                description: "Collaborative research on the motivational impact of digital badges. Piloting large-scale credentialing frameworks to bridge formal and informal learning paths.",
+                                tags: ["Badgr", "Learning Analytics", "Global South"]
+                            }
+                        ].map((proj, i) => (
+                            <div key={i} className="group cursor-default">
+                                <span className="text-xs font-mono text-slate-400 mb-2 block">{proj.context}</span>
+                                <h3 className="text-xl font-medium text-slate-900 mb-3 group-hover:text-blue-900 transition-colors">{proj.title}</h3>
+                                <p className="text-slate-600 mb-4 max-w-3xl leading-relaxed font-light">{proj.description}</p>
+                                <div className="flex gap-2">
+                                    {proj.tags.map(tag => (
+                                        <span key={tag} className="text-[10px] px-2 py-1 bg-slate-50 border border-slate-100 text-slate-500 rounded-full tracking-wider uppercase">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+
+            const Archive = () => (
+                <div className="space-y-10 animate-in">
+                    <div className="flex justify-between items-end border-b border-slate-100 pb-4">
+                        <h2 className="text-3xl font-serif text-slate-900">Research Archive</h2>
+                        <span className="text-slate-400 text-sm font-light italic">Peer-reviewed publications</span>
+                    </div>
+                    
+                    <div className="space-y-8">
+                        <section className="space-y-4">
+                            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold">Journal Articles & Chapters</h3>
+                            {[
+                                { year: "2023", title: "Leading Edge Use of Technology for Teacher Professional Development", journal: "Education Sciences", url: "https://doi.org/10.3390/educsci13040386" },
+                                { year: "2022", title: "Integrated Approach to Technology in Education in India", journal: "Taylor & Francis", url: "https://doi.org/10.4324/97810033300274" },
+                                { year: "2021", title: "Constructivist teaching and learning with technologies", journal: "British Journal of Educational Technology", url: "https://doi.org/10.1111/bjet.13111" }
+                            ].map((pub, i) => (
+                                <div key={i} className="flex gap-6 items-start group">
+                                    <span className="text-sm font-mono text-slate-300 pt-1">{pub.year}</span>
+                                    <div className="flex-1">
+                                        <a href={pub.url} target="_blank" rel="noopener noreferrer" className="text-slate-900 font-medium hover:text-blue-700 hover:underline cursor-pointer decoration-slate-300 flex items-center gap-2">
+                                            {pub.title}
+                                            <Icon name="external-link" className="w-3 h-3 text-slate-300" />
+                                        </a>
+                                        <p className="text-sm text-slate-500">{pub.journal}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </section>
+                    </div>
+                </div>
+            );
+
+            const Pedagogy = () => (
+                <div className="space-y-10 animate-in">
+                    <h2 className="text-3xl font-serif text-slate-900">Academic Service & Instruction</h2>
+                    <div className="grid md:grid-cols-2 gap-12">
+                        <div className="space-y-6">
+                            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold">Instruction</h3>
+                            <ul className="space-y-4">
+                                <li className="flex gap-4">
+                                    <span className="h-2 w-2 rounded-full bg-slate-900 mt-2 shrink-0"></span>
+                                    <div>
+                                        <p className="font-medium text-slate-900">Machine Learning</p>
+                                        <p className="text-sm text-slate-500 font-light">Teaching Fellow for graduate-level courses focusing on algorithmic foundations.</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <span className="h-2 w-2 rounded-full bg-slate-900 mt-2 shrink-0"></span>
+                                    <div>
+                                        <p className="font-medium text-slate-900">Algorithms & Python</p>
+                                        <p className="text-sm text-slate-500 font-light">Foundational instruction for M.Sc. Computer Science candidates.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="space-y-6">
+                            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold">Editorial & Committees</h3>
+                            <ul className="space-y-4">
+                                <li className="flex gap-4">
+                                    <span className="h-2 w-2 rounded-full bg-slate-300 mt-2 shrink-0"></span>
+                                    <div>
+                                        <p className="font-medium text-slate-900 text-sm">Editorial Board Member</p>
+                                        <p className="text-sm text-slate-500 italic">Critical Digital Humanities Journal (CDH)</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <span className="h-2 w-2 rounded-full bg-slate-300 mt-2 shrink-0"></span>
+                                    <div>
+                                        <p className="font-medium text-slate-900 text-sm">Peer Reviewer</p>
+                                        <p className="text-sm text-slate-500 italic">Education and Information Technologies (Springer)</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-4">
+                                    <span className="h-2 w-2 rounded-full bg-slate-300 mt-2 shrink-0"></span>
+                                    <div>
+                                        <p className="font-medium text-slate-900 text-sm">Conference Coordination</p>
+                                        <p className="text-sm text-slate-500 italic">T4E 2025 Program Administration</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            );
+
+            return (
+                <div className="min-h-screen bg-white text-slate-900 selection:bg-slate-200">
+                    <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-16">
+                        <aside className="md:w-48 space-y-12">
+                            <div className="space-y-1">
+                                <h1 className="text-xl font-serif font-bold tracking-tight text-slate-900">sumegh p.</h1>
+                                <p className="text-xs font-mono text-slate-400 uppercase tracking-widest">Researcher</p>
+                            </div>
+
+                            <nav className="flex flex-col gap-4">
+                                {navItems.map(item => (
+                                    <button
+                                        key={item.id}
+                                        onClick={() => setActiveTab(item.id)}
+                                        className={`flex items-center gap-3 text-sm transition-all hover:translate-x-1 ${
+                                            activeTab === item.id 
+                                                ? 'text-slate-900 font-medium' 
+                                                : 'text-slate-400 font-light'
+                                        }`}
+                                    >
+                                        <span className={`h-1 w-1 rounded-full ${activeTab === item.id ? 'bg-slate-900' : 'bg-transparent'}`}></span>
+                                        {item.label}
+                                    </button>
+                                ))}
+                            </nav>
+
+                            <div className="pt-12 space-y-4 border-t border-slate-50">
+                                <a href="#" className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-900 transition-colors">
+                                    <Icon name="file-text" className="w-3 h-3" />
+                                    Download CV (PDF)
+                                </a>
+                                <a href="mailto:sumegh.connect@gmail.com" className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-900 transition-colors">
+                                    <Icon name="mail" className="w-3 h-3" />
+                                    Get in touch
+                                </a>
+                                <div className="flex gap-3 pt-2 text-slate-300">
+                                    <a href="https://orcid.org/0000-0003-0709-2174" target="_blank" rel="noopener noreferrer">
+                                        <Icon name="external-link" className="w-3 h-3 cursor-pointer hover:text-slate-900" title="ORCID" />
+                                    </a>
+                                    <a href="https://linkedin.com/in/sumeghhp" target="_blank" rel="noopener noreferrer">
+                                        <Icon name="external-link" className="w-3 h-3 cursor-pointer hover:text-slate-900" title="LinkedIn" />
+                                    </a>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <main className="flex-1 max-w-4xl pb-24">
+                            {activeTab === 'home' && <Home />}
+                            {activeTab === 'inquiries' && <Inquiries />}
+                            {activeTab === 'archive' && <Archive />}
+                            {activeTab === 'pedagogy' && <Pedagogy />}
+                        </main>
+                    </div>
+
+                    <footer className="max-w-6xl mx-auto px-6 py-8 border-t border-slate-50 flex justify-between items-center text-[10px] text-slate-300 uppercase tracking-widest">
+                        <span>© 2026 Sumegh P.</span>
+                        <span>Independent Research | Socio-Technical Design</span>
+                    </footer>
+                </div>
+            );
+        };
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
