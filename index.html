@@ -1,298 +1,655 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumegh P. | Portfolio</title>
-    
-    <!-- 1. Tailwind CSS (Styling) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- 2. React & ReactDOM (Core Library) -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- 3. Babel (To understand JSX in the browser) -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>Sumegh P</title>
+<meta name="description" content="Sumegh P studies how digital systems change the way people learn and think, and builds the tools to see it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..900,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a scholar's site of tilted planes. Skewed name block, slanted grey bands, news beside a portrait, and a grid of typographic covers. Each menu item opens its own page. */
+:root {
+  --bg: #FBFBFA;
+  --band: #EDEDEA;
+  --ink: #1D1E22;
+  --muted: #5B5E66;
+  --rule: #C9C9C5;
+  --link: #1F3B8C;
+  --blue: #1F3B8C;
+  --ochre: #D39A2E;
+  --rose: #D9776A;
+  --green: #2F6B57;
+  --night: #17181D;
+  --paper: #F6F4EE;
+  --on-dark: #F7F4EB;
+  --on-light: #151417;
 
-    <!-- 4. Lucide Icons (Icon Library) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        /* Custom animation classes since we aren't using a full build system */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-in {
-            animation: fadeIn 0.7s ease-out forwards;
-        }
-    </style>
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #111216; --band: #1B1C21; --ink: #ECEBE6; --muted: #A3A5AD; --rule: #34363D; --link: #9BB2EE; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #111216; --band: #1B1C21; --ink: #ECEBE6; --muted: #A3A5AD; --rule: #34363D; --link: #9BB2EE; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { color: var(--rose); }
+:focus-visible { outline: 2px solid var(--ochre); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+/* ---------- Header ---------- */
+.masthead .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 0 28px; }
+.logo { display: block; text-decoration: none; position: relative; width: 300px; height: 210px; }
+.logo .plane { position: absolute; inset: 0 60px 0 0; background: var(--ochre); clip-path: polygon(0 0, 100% 16%, 100% 100%, 0 82%); }
+.logo .word { position: absolute; left: 40px; top: 78px; font-family: var(--sans); font-weight: 700; font-size: 3rem; letter-spacing: -0.02em; line-height: 1; color: var(--on-light); white-space: nowrap; }
+.logo .word span { color: var(--blue); }
+.logo:hover .plane { background: var(--rose); }
+.menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 32px; padding-top: 28px; }
+.menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; align-content: start; }
+.menu a { color: var(--ink); text-decoration: none; font-size: 0.98rem; display: inline-flex; align-items: center; gap: 8px; }
+.menu a:hover, .menu a[aria-current="page"] { color: var(--rose); }
+.menu a[aria-current="page"] { font-weight: 600; }
+.menu .ext::before { content: ""; width: 9px; height: 9px; background: var(--blue); clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%); flex: none; }
+
+/* ---------- Slanted band ---------- */
+.band { background: var(--band); clip-path: polygon(0 70px, 100% 0, 100% calc(100% - 70px), 0 100%); padding-block: 120px 130px; }
+.band.flat-top { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 70px), 0 100%); padding-top: 64px; }
+
+/* ---------- Home: portrait + news ---------- */
+.intro { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 0; align-items: start; }
+.portrait { padding-right: 44px; }
+.portrait .skew { clip-path: polygon(0 5%, 100% 0, 100% 93%, 0 100%); background: #E8E5DC; }
+.portrait svg { display: block; width: 100%; height: auto; }
+.portrait { --paper: #F7F5EF; --canvas: #E8E5DC; --line: #151417; }
+#tess { display: block; width: 100%; height: auto; aspect-ratio: 5 / 6; touch-action: none; cursor: ew-resize; }
+.f-blue { fill: var(--blue); } .f-ochre { fill: var(--ochre); } .f-rose { fill: var(--rose); }
+.f-green { fill: var(--green); } .f-paper { fill: var(--paper); } .f-line { fill: var(--line); } .f-canvas { fill: var(--canvas); }
+.st { stroke: var(--line); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.st-only { fill: none; stroke: var(--line); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pl { transform-box: fill-box; transform-origin: center; transition: transform .28s ease-out; }
+.pl.paintable { cursor: pointer; }
+.portrait.shattered .pl { transition: transform .8s cubic-bezier(.2,1.4,.4,1); }
+.pl:hover > * { filter: brightness(1.07); }
+.pbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
+.pbar .caption { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); line-height: 1.4; flex: 1 1 200px; }
+.btn.alt { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.btn.alt:hover { background: var(--ochre); color: var(--on-light); box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .pl { transition: none !important; } }
+.portrait .who { margin-top: 18px; font-size: 1.15rem; line-height: 1.45; max-width: 34ch; }
+.portrait .who em { font-family: var(--serif); font-style: italic; font-size: 1.25rem; }
+.news { border-left: 1px solid var(--rule); padding-left: 40px; min-width: 0; }
+.news h2, .pagehead h1 { font-family: var(--sans); font-weight: 600; font-size: 1.6rem; line-height: 1.2; margin: 0 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--muted); }
+.news ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.news li { font-size: 0.98rem; line-height: 1.5; }
+.news time { color: var(--muted); white-space: nowrap; }
+.news .more { margin-top: 16px; display: inline-block; }
+
+/* ---------- Selected work ---------- */
+.work-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; margin: 10px 0 30px; }
+.work-head h2 { font-family: var(--sans); font-weight: 600; font-size: 1.6rem; margin: 0; }
+.filterbar { font-size: 0.92rem; color: var(--muted); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.filterbar[hidden] { display: none !important; }
+.linkbtn { all: unset; cursor: pointer; color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+.linkbtn:hover { color: var(--rose); }
+.linkbtn:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
+.covers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 56px 30px; }
+.covers li { display: grid; gap: 10px; align-content: start; }
+.covers li[hidden] { display: none !important; }
+.cover { display: block; aspect-ratio: 544 / 504; max-width: 100%; clip-path: polygon(0 6%, 100% 0, 100% 93%, 0 100%); text-decoration: none; position: relative; overflow: hidden; transition: transform .35s cubic-bezier(.3,1.4,.5,1); }
+.cover:hover { transform: translateY(-4px) rotate(-1deg); }
+.cover:focus-visible { outline: none; }
+.cover:focus-visible + .ctitle { text-decoration: underline; }
+.cover .in { position: absolute; inset: 9% 9% 10% 9%; display: flex; flex-direction: column; gap: 6px; }
+.ctitle { font-weight: 600; font-size: 0.98rem; line-height: 1.35; color: var(--ink); text-decoration: none; }
+.ctitle:hover { color: var(--rose); }
+.ctags { display: flex; gap: 10px; font-size: 0.85rem; }
+
+/* cover designs: fixed pigments, like printed objects */
+.c-rose { background: var(--rose); color: var(--on-light); }
+.c-blue { background: var(--blue); color: var(--on-dark); }
+.c-paper { background: var(--paper); color: var(--on-light); }
+.c-ochre { background: var(--ochre); color: var(--on-light); }
+.c-night { background: var(--night); color: var(--on-dark); }
+.c-green { background: var(--green); color: var(--on-dark); }
+.k-small { font-family: var(--mono); font-size: clamp(0.55rem, 0.9vw, 0.7rem); letter-spacing: 0.06em; text-transform: uppercase; opacity: .9; }
+.k-serif { font-family: var(--serif); font-weight: 500; font-size: clamp(1.05rem, 2vw, 1.6rem); line-height: 1.05; letter-spacing: -0.01em; }
+.k-serif-i { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 2.8vw, 2.3rem); line-height: 1; }
+.k-heavy { font-family: var(--sans); font-weight: 700; font-size: clamp(1rem, 1.9vw, 1.5rem); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; }
+.cover svg.motif { position: absolute; pointer-events: none; }
+
+/* ---------- Inner pages ---------- */
+.page[hidden] { display: none !important; }
+.pagehead { margin-bottom: 30px; }
+.pagehead p { color: var(--muted); max-width: 62ch; font-size: 1.05rem; }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; align-items: start; }
+.prose { display: grid; gap: 16px; max-width: 66ch; font-size: 1.04rem; }
+.lead { font-family: var(--serif); font-style: italic; font-size: 1.45rem; line-height: 1.35; max-width: 34ch; }
+.ledger { border-left: 1px solid var(--rule); padding-left: 26px; display: grid; gap: 14px; }
+.ledger h2 { font-size: 0.8rem; font-family: var(--mono); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.ledger div { display: grid; gap: 1px; }
+.ledger .yr { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ledger .what { font-weight: 600; font-size: 0.96rem; line-height: 1.35; }
+.ledger .where { font-size: 0.88rem; color: var(--muted); }
+
+.quad { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
+.quad article { display: grid; gap: 8px; align-content: start; }
+.chip { width: 54px; height: 34px; clip-path: polygon(0 12%, 100% 0, 100% 88%, 0 100%); }
+.quad h2, .rows h2, .tools h2, .offers h2 { font-family: var(--sans); font-weight: 600; font-size: 1.18rem; line-height: 1.3; margin: 0; }
+.quad p, .offers p { color: var(--muted); }
+
+.rows { display: grid; gap: 0; }
+.rows article { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 26px; padding-block: 24px; border-top: 1px solid var(--rule); }
+.rows article:first-child { border-top: 0; padding-top: 0; }
+.rows .yr { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.rows .body { display: grid; gap: 7px; min-width: 0; }
+.meta { font-size: 0.88rem; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+.rows p { max-width: 66ch; }
+.links { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 0.94rem; }
+.badge { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--green); color: var(--on-dark); padding: 2px 7px; margin-left: 8px; vertical-align: 2px; }
+
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; }
+.pubs li { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 20px; padding-block: 16px; border-top: 1px solid var(--rule); }
+.pubs li:first-child { border-top: 0; padding-top: 0; }
+.pubs .yr { font-family: var(--mono); font-size: 0.88rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.cite { overflow-wrap: anywhere; min-width: 0; }
+.cite .t { font-family: var(--serif); font-size: 1.08rem; }
+.cite b { font-weight: 600; }
+.cite .kind { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-right: 8px; }
+.cite .doi { font-family: var(--mono); font-size: 0.82rem; }
+
+.tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.tools article { display: grid; gap: 12px; align-content: start; }
+.tools p { color: var(--muted); }
+
+.offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; margin-bottom: 30px; }
+.offers article { display: grid; gap: 6px; border-top: 3px solid var(--ink); padding-top: 14px; }
+
+.svc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin-top: 56px; padding-top: 30px; border-top: 1px solid var(--rule); }
+.svc h2 { font-family: var(--mono); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.svc ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.svc li { font-weight: 600; font-size: 0.96rem; line-height: 1.4; display: grid; }
+.svc li span { font-weight: 400; color: var(--muted); font-size: 0.86rem; }
+
+.contact { display: grid; gap: 26px; }
+.email-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.email { font-family: var(--serif); font-size: clamp(1.5rem, 4.5vw, 2.4rem); user-select: all; overflow-wrap: anywhere; }
+.btn { font: 600 0.9rem var(--sans); padding: 10px 18px; border: 0; background: var(--ink); color: var(--bg); cursor: pointer; clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); }
+.btn:hover { background: var(--rose); color: var(--on-light); }
+.note { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); min-height: 1.2em; }
+.elsewhere { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px 28px; }
+.elsewhere li { display: grid; gap: 2px; border-top: 1px solid var(--rule); padding-top: 8px; }
+.elsewhere .k { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.foot { margin-top: 90px; }
+.foot .band { padding-block: 110px 70px; clip-path: polygon(0 70px, 100% 0, 100% 100%, 0 100%); }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 36px; justify-content: flex-end; align-items: center; }
+.foot .tile { display: block; width: 150px; height: 130px; background: var(--rose); clip-path: polygon(0 14%, 100% 0, 100% 86%, 0 100%); color: var(--on-light); text-decoration: none; padding: 34px 18px; font-size: 1.05rem; line-height: 1.25; }
+.foot .tile:hover { background: var(--ochre); color: var(--on-light); }
+.foot p { max-width: 36ch; font-size: 0.92rem; color: var(--muted); margin: 0; }
+
+.section-gap { padding-block: 40px 20px; }
+
+@media (max-width: 1000px) {
+  .covers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .masthead .wrap { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .menu { padding-top: 0; }
+  .intro, .cols { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .portrait { padding-right: 0; max-width: 460px; }
+  .news { border-left: 0; padding-left: 0; }
+  .covers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 20px; }
+  .quad, .tools, .offers, .svc { grid-template-columns: minmax(0, 1fr); }
+  .band { padding-block: 90px 100px; clip-path: polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%); }
+  .band.flat-top { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%); padding-top: 40px; }
+}
+@media (max-width: 560px) {
+  .logo { width: 240px; height: 160px; }
+  .logo .plane { right: 40px; }
+  .logo .word { left: 28px; top: 58px; font-size: 2.3rem; }
+  .menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .menu ul:nth-child(3) { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 8px; }
+  .rows article, .pubs li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .k-serif { font-size: 1rem; } .k-heavy { font-size: 0.95rem; } .k-serif-i { font-size: 1.35rem; }
+}
+@media (prefers-reduced-motion: reduce) { .cover { transition: none; } }
+</style>
 </head>
-<body class="bg-white">
-    <div id="root"></div>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Sumegh P, home">
+      <span class="plane" aria-hidden="true"></span>
+      <span class="word" aria-hidden="true">sumegh p<span>.</span></span>
+    </a>
+    <nav class="menu" aria-label="Pages">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+      <ul>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#tools">Recent tools</a></li>
+        <li><a href="#work">Work with me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <ul>
+        <li><a class="ext" href="https://orcid.org/0000-0003-0709-2174" target="_blank" rel="noopener">ORCID</a></li>
+        <li><a class="ext" href="https://www.linkedin.com/in/sumeghhp" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="ext" href="https://github.com/sumeghp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="ext" href="https://gitlab.com/sumeghhp" target="_blank" rel="noopener">GitLab</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <script type="text/babel">
-        // We access React and Lucide from the global window object
-        const { useState, useEffect } = React;
-        
-        // Icon Component Helper (Since we can't import directly from lucide-react in this standalone file)
-        const Icon = ({ name, className }) => {
-            useEffect(() => {
-                lucide.createIcons();
-            }, [name]);
-            return <i data-lucide={name} className={className}></i>;
-        };
+<main>
+  <!-- ================= HOME ================= -->
+  <div class="page" data-page="home">
+    <div class="band">
+      <div class="wrap intro">
+        <div class="portrait">
+          <div class="skew">
+            <canvas id="tess" role="img" aria-label="A circuit board whose right-angled traces gradually bend into an interlocking black and white pattern"></canvas>
+          </div>
+          <div class="pbar">
+            <span class="caption">Where does the wiring end and the thinking begin?</span>
+            <button class="btn" type="button" id="invert">Invert</button>
+          </div>
+          <p class="who">Researcher in technology and learning. <em>How do digital systems change the way people learn and think?</em></p>
+        </div>
+        <div class="news">
+          <h2>News (projects, events, publications)</h2>
+          <ul>
+            <li>Organising the paper programme for T4E 2026, the International Conference on Technology for Education, IIT Jodhpur, 7–9 December 2026. <time>October 2026</time></li>
+            <li>New version of the <a href="https://sumeghhp.gitlab.io/whatsapp_plots/" target="_blank" rel="noopener">WhatsApp Chat Analyser</a>, now measuring turn-taking, burstiness and weekly routine in group chats. <time>October 2026</time></li>
+            <li>Released <a href="https://sumeghp.github.io/t4e-format-checker/" target="_blank" rel="noopener">T4E Format Check</a>, a tool that checks papers against the Springer template before submission. <time>October 2026</time></li>
+            <li>Field study of the digital readiness of self-help group women in Almora, Uttarakhand, with DigiDhaara Foundation. <time>2026</time></li>
+            <li>Invited participant, Digital Inclusion Summit, New Delhi. <time>February 2026</time></li>
+            <li>DH Methods Bootcamp: Text, Data and Archives, JPN National Centre and IIT Indore. <time>January 2026</time></li>
+            <li>Contributed to the TISS CETE report <em>Studying engagement with digital classrooms in upper primary and secondary government schools in Madhya Pradesh</em>. <time>2025</time></li>
+          </ul>
+          <a class="more" href="#about">More about me →</a>
+        </div>
+      </div>
+    </div>
 
-        const App = () => {
-            const [activeTab, setActiveTab] = useState('home');
+    <div class="wrap section-gap">
+      <div class="work-head">
+        <div class="filterbar" id="filterbar" hidden><span>Showing <b id="filtername"></b></span><button class="linkbtn" type="button" id="clearfilter">Show all</button></div>
+        <h2 style="margin-left:auto">Selected Work</h2>
+      </div>
+      <ul class="covers" id="covers">
+        <li data-tags="Chapter 2022">
+          <a class="cover c-rose" href="https://doi.org/10.4324/9781003300274-7" target="_blank" rel="noopener" aria-label="Findings from outcome studies, Routledge chapter 2022">
+            <span class="in"><span class="k-small">Routledge · Charania, Sumegh P et al.</span><span class="k-serif" style="margin-top:auto">Integrated Approach to Technology in Education in India</span></span>
+          </a>
+          <a class="ctitle" href="https://doi.org/10.4324/9781003300274-7" target="_blank" rel="noopener">Findings from outcome studies (ITE)</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Chapter">Chapter</button><button class="linkbtn" type="button" data-tag="2022">2022</button></span>
+        </li>
+        <li data-tags="Article 2021">
+          <a class="cover c-blue" href="https://doi.org/10.1111/bjet.13111" target="_blank" rel="noopener" aria-label="Constructivist teaching and learning with technologies in the COVID-19 lockdown, BJET 2021">
+            <span class="in"><span class="k-heavy">Constructivist learning in lockdown</span><span class="k-small" style="margin-top:auto">British Journal of Educational Technology</span></span>
+          </a>
+          <a class="ctitle" href="https://doi.org/10.1111/bjet.13111" target="_blank" rel="noopener">Constructivist teaching and learning with technologies in the COVID-19 lockdown in Eastern India</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Article">Article</button><button class="linkbtn" type="button" data-tag="2021">2021</button></span>
+        </li>
+        <li data-tags="Article 2023">
+          <a class="cover c-paper" href="https://doi.org/10.3390/educsci13040386" target="_blank" rel="noopener" aria-label="Leading edge use of technology for teacher professional development, Education Sciences 2023">
+            <svg class="motif" viewBox="0 0 100 100" style="right:6%;bottom:8%;width:48%" aria-hidden="true"><circle cx="50" cy="50" r="34" fill="none" stroke="#1D1E22" stroke-dasharray="2 3"/><g fill="#D9776A" stroke="#151417" stroke-width="1"><circle cx="50" cy="16" r="7"/><circle cx="82" cy="40" r="7"/><circle cx="70" cy="78" r="7"/><circle cx="30" cy="78" r="7"/><circle cx="18" cy="40" r="7"/></g></svg>
+            <span class="in"><span class="k-serif-i">Teachers, connected</span><span class="k-small">Education Sciences</span></span>
+          </a>
+          <a class="ctitle" href="https://doi.org/10.3390/educsci13040386" target="_blank" rel="noopener">Leading edge use of technology for teacher professional development in Indian schools</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Article">Article</button><button class="linkbtn" type="button" data-tag="2023">2023</button></span>
+        </li>
+        <li data-tags="Report 2021">
+          <a class="cover c-ochre" href="https://oro.open.ac.uk/75653/" target="_blank" rel="noopener" aria-label="Open digital badges report, The Open University 2021">
+            <svg class="motif" viewBox="0 0 100 60" style="left:9%;bottom:12%;width:70%" aria-hidden="true"><g stroke="#151417" stroke-width="2"><circle cx="16" cy="30" r="14" fill="#F6F4EE"/><circle cx="50" cy="30" r="14" fill="#1F3B8C"/><circle cx="84" cy="30" r="14" fill="#D9776A"/></g></svg>
+            <span class="in"><span class="k-heavy">Open digital badges</span><span class="k-small">The Open University</span></span>
+          </a>
+          <a class="ctitle" href="https://oro.open.ac.uk/75653/" target="_blank" rel="noopener">Teachers' professional learning during and after Covid: a role for open digital badges</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Report">Report</button><button class="linkbtn" type="button" data-tag="2021">2021</button></span>
+        </li>
+        <li data-tags="Project 2022">
+          <a class="cover c-night" href="#projects" aria-label="AGSE, Assessment of Google Solutions for Education">
+            <svg class="motif" viewBox="0 0 100 60" style="right:8%;bottom:12%;width:58%" aria-hidden="true"><g fill="#D39A2E"><rect x="0" y="0" width="14" height="10"/><rect x="18" y="0" width="14" height="10"/><rect x="36" y="0" width="14" height="10" fill="#D9776A"/><rect x="54" y="0" width="14" height="10"/><rect x="0" y="16" width="14" height="10"/><rect x="18" y="16" width="14" height="10" fill="#F6F4EE"/><rect x="36" y="16" width="14" height="10"/><rect x="54" y="16" width="14" height="10"/><rect x="0" y="32" width="14" height="10" fill="#F6F4EE"/><rect x="18" y="32" width="14" height="10"/><rect x="36" y="32" width="14" height="10"/><rect x="54" y="32" width="14" height="10" fill="#D9776A"/></g></svg>
+            <span class="in"><span class="k-small">Assessment of Google Solutions for Education</span><span class="k-serif-i">AGSE</span></span>
+          </a>
+          <a class="ctitle" href="#projects">AGSE: 1:1 Chromebooks in Gwalior and Indore schools</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Project">Project</button><button class="linkbtn" type="button" data-tag="2022">2022</button></span>
+        </li>
+        <li data-tags="Project Report 2025">
+          <a class="cover c-green" href="#projects" aria-label="Digital Classroom Project, Madhya Pradesh">
+            <span class="in"><span class="k-heavy">Digital classrooms in Madhya Pradesh</span><span class="k-serif" style="margin-top:auto">60+ schools</span><span class="k-small">TISS · CETE</span></span>
+          </a>
+          <a class="ctitle" href="#projects">Studying engagement with digital classrooms in government schools</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Report">Report</button><button class="linkbtn" type="button" data-tag="2025">2025</button></span>
+        </li>
+        <li data-tags="Tool 2026">
+          <a class="cover c-paper" href="https://sumeghhp.gitlab.io/whatsapp_plots/" target="_blank" rel="noopener" aria-label="WhatsApp Chat Analyser tool">
+            <svg class="motif" viewBox="0 0 100 70" style="right:8%;top:10%;width:56%" aria-hidden="true"><g stroke="#151417" stroke-width="2" stroke-linejoin="round"><path fill="#2F6B57" d="M4,4 h52 a4,4 0 0 1 4,4 v18 a4,4 0 0 1 -4,4 h-36 l-10,9 v-9 h-6 a4,4 0 0 1 -4,-4 v-18 a4,4 0 0 1 4,-4 Z"/><path fill="#D39A2E" d="M96,36 h-44 a4,4 0 0 0 -4,4 v16 a4,4 0 0 0 4,4 h30 l9,8 v-8 h5 a4,4 0 0 0 4,-4 v-16 a4,4 0 0 0 -4,-4 Z"/></g></svg>
+            <span class="in" style="justify-content:flex-end"><span class="k-serif">WhatsApp Chat Analyser</span><span class="k-small">Runs in your browser</span></span>
+          </a>
+          <a class="ctitle" href="https://sumeghhp.gitlab.io/whatsapp_plots/" target="_blank" rel="noopener">WhatsApp Chat Analyser</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Tool">Tool</button><button class="linkbtn" type="button" data-tag="2026">2026</button></span>
+        </li>
+        <li data-tags="Project 2017">
+          <a class="cover c-blue" href="#projects" aria-label="CLIx and TISSx learning platforms">
+            <svg class="motif" viewBox="0 0 100 70" style="right:8%;bottom:11%;width:52%" aria-hidden="true"><g stroke="#F6F4EE" stroke-width="1" opacity=".45"><path d="M0,10 H100 M0,30 H100 M0,50 H100 M20,0 V70 M40,0 V70 M60,0 V70 M80,0 V70"/></g><path d="M4,66 L96,6" stroke="#D39A2E" stroke-width="4" stroke-linecap="round"/><g fill="#F6F4EE" stroke="#151417" stroke-width="1.5"><circle cx="20" cy="55.6" r="4.5"/><circle cx="50" cy="36" r="4.5"/><circle cx="80" cy="16.4" r="4.5"/></g></svg>
+            <span class="in"><span class="k-heavy">CLIx</span><span class="k-small">Connected Learning Initiative · TISS</span></span>
+          </a>
+          <a class="ctitle" href="#projects">CLIx and TISSx: learning platforms and maths tools on Open edX</a>
+          <span class="ctags"><button class="linkbtn" type="button" data-tag="Project">Project</button><button class="linkbtn" type="button" data-tag="2017">2017</button></span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-            // Navigation Items
-            const navItems = [
-                { id: 'home', label: 'home', icon: 'microscope' },
-                { id: 'inquiries', label: 'inquiries', icon: 'book' },
-                { id: 'archive', label: 'archive', icon: 'file-text' },
-                { id: 'pedagogy', label: 'pedagogy', icon: 'graduation-cap' }
-            ];
+  <!-- ================= ABOUT ================= -->
+  <div class="page" data-page="about" hidden>
+    <div class="band flat-top"><div class="wrap">
+      <div class="pagehead"><h1>About</h1></div>
+      <div class="cols">
+        <div class="prose">
+          <p class="lead">I study how digital systems change the way people learn and think, and I build the tools to see it.</p>
+          <p>I trained as an engineer and computer scientist at the University of Mumbai, then spent seven years at the Tata Institute of Social Sciences studying how technology reaches government schools. I ran Open edX learning platforms, wrote interactive maths tools, trained teachers in four states, and led field research in more than 60 schools in Madhya Pradesh.</p>
+          <p>Since 2024 I have managed the Safexpress Centre for Data, Learning and Decision Sciences at Ashoka University, running its operations, events and GPU cluster. I also help organise T4E, the international conference on technology for education.</p>
+          <p>My questions have shifted from whether a technology works in a classroom to what it does to the people using it: how generative AI changes who does the thinking, how communities form on messaging platforms, and how culture lives in digital images. I am looking for PhD positions starting in 2027.</p>
+        </div>
+        <div class="ledger" aria-label="Career summary">
+          <h2>Career</h2>
+          <div><span class="yr">2024 –</span><span class="what">Centre Manager, SCDLDS</span><span class="where">Ashoka University</span></div>
+          <div><span class="yr">2023 – 2025</span><span class="what">Evaluation consultant, ITE</span><span class="where">Sir Ratan Tata Trust</span></div>
+          <div><span class="yr">2022 – 2024</span><span class="what">Senior Research Associate</span><span class="where">TISS, Gwalior and Indore</span></div>
+          <div><span class="yr">2019 – 2022</span><span class="what">Research Associate</span><span class="where">TISS, Mumbai</span></div>
+          <div><span class="yr">2017 – 2019</span><span class="what">Research Assistant</span><span class="where">TISS, Mumbai</span></div>
+          <div><span class="yr">2017</span><span class="what">M.Sc. Computer Science</span><span class="where">University of Mumbai</span></div>
+          <div><span class="yr">2014</span><span class="what">B.E. Instrumentation Engineering</span><span class="where">University of Mumbai</span></div>
+        </div>
+      </div>
+      <div class="svc">
+        <div><h2>Academic service</h2><ul>
+          <li>T4E 2026<span>Organising team: peer review and paper programme</span></li>
+          <li>T4E 2025<span>Conference manager, submissions and peer review</span></li>
+          <li>exSPLOre 2025 and 2026<span>Local organising committee</span></li>
+          <li>Education and Information Technologies<span>Reviewer</span></li>
+        </ul></div>
+        <div><h2>Teaching</h2><ul>
+          <li>Introduction to Machine Learning<span>Teaching fellow, Ashoka University, 2024</span></li>
+          <li>Python for Algorithms<span>Visiting faculty, M.Sc. Computer Science, University of Mumbai, 2017–18</span></li>
+          <li>Teacher professional development<span>Courses and workshops for government school teachers</span></li>
+        </ul></div>
+        <div><h2>Recent training</h2><ul>
+          <li>DH Methods Bootcamp<span>JPN National Centre and IIT Indore, 2026</span></li>
+          <li>Digital Inclusion Summit<span>Invited participant, New Delhi, 2026</span></li>
+        </ul></div>
+      </div>
+    </div></div>
+  </div>
 
-            // Content Components
-            const Home = () => (
-                <div className="space-y-12 animate-in">
-                    <section className="space-y-6">
-                        <h1 className="text-4xl md:text-5xl font-serif text-slate-900 leading-tight">
-                            Investigating the frictions between algorithmic logic and pedagogical practice.
-                        </h1>
-                        <div className="max-w-3xl text-lg text-slate-700 leading-relaxed font-light space-y-6">
-                            <p>
-                                Sumegh is an independent researcher and practitioner operating at the intersection of 
-                                <strong> socio-technical systems</strong>, <strong>Digital Humanities</strong>, and <strong>critical EdTech</strong>. 
-                                His work focuses on the ethical deployment of Digital Public Infrastructure (DPI) and the 
-                                complexities of scaling pedagogical innovations within marginalized contexts.
-                            </p>
-                            <p>
-                                With over seven years of immersive field experience, Sumegh investigates how data-driven 
-                                frameworks and algorithmic logic interact with local knowledge systems in the Global South. 
-                                A proponent of "Tech for Good," his research seeks to deconstruct the digital divide by 
-                                harmonizing elite institutional research with transformative, grassroots implementation. 
-                                He is particularly interested in the role of Community of Practice (CoP) and digital 
-                                micro-credentials in democratizing professional development, aiming to foster an 
-                                educational landscape that is both technologically advanced and socially just.
-                            </p>
-                        </div>
-                    </section>
+  <!-- ================= RESEARCH ================= -->
+  <div class="page" data-page="research" hidden>
+    <div class="band flat-top"><div class="wrap">
+      <div class="pagehead"><h1>Research</h1><p>Four questions I keep returning to.</p></div>
+      <div class="quad">
+        <article><div class="chip" style="background:var(--blue)"></div><h2>Thinking agency and generative AI</h2><p>When students read and write with AI, who is doing the knowing? I am interested in cognitive offloading and in how learners keep ownership of their own thinking.</p></article>
+        <article><div class="chip" style="background:var(--ochre)"></div><h2>Learning where resources are thin</h2><p>Devices, connectivity and language in government schools and rural communities across the Global South, and who gets left out when a technology arrives.</p></article>
+        <article><div class="chip" style="background:var(--green)"></div><h2>Platforms and online communities</h2><p>How people build communities on messaging and social platforms: who speaks, who replies, and how the rhythm of a group follows the rhythm of their lives.</p></article>
+        <article><div class="chip" style="background:var(--rose)"></div><h2>Culture, creativity and heritage</h2><p>Computational methods for reading images, film and archives, used to explain why certain forms move people.</p></article>
+      </div>
+    </div></div>
+  </div>
 
-                    <section className="pt-8 border-t border-slate-100">
-                        <h2 className="text-sm uppercase tracking-widest text-slate-400 mb-6 font-semibold tracking-[0.2em]">Core Research Inquiries</h2>
-                        <div className="grid md:grid-cols-2 gap-8">
-                            {[
-                                { title: "Digital Public Infrastructure", desc: "The ethical deployment of large-scale digital systems in public education." },
-                                { title: "Algorithmic Ethics", desc: "How data-driven decisions impact marginalized learners in resource-constrained environments." },
-                                { title: "Communities of Practice", desc: "Leveraging digital networks for democratized teacher professional development." },
-                                { title: "Knowledge Graphs", desc: "Using graph-based computation for advanced knowledge modeling in educational contexts." }
-                            ].map((item, i) => (
-                                <div key={i} className="group">
-                                    <h3 className="text-slate-900 font-medium mb-2 flex items-center gap-2">
-                                        <Icon name="chevron-right" className="w-3 h-3 text-slate-300 group-hover:text-slate-900 transition-colors" />
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-                </div>
-            );
+  <!-- ================= PROJECTS ================= -->
+  <div class="page" data-page="projects" hidden>
+    <div class="band flat-top"><div class="wrap">
+      <div class="pagehead"><h1>Projects</h1><p>Fieldwork, platforms and evaluations, newest first.</p></div>
+      <div class="rows">
+        <article><span class="yr">2026</span><div class="body"><h2>Digital readiness of self-help group women in Almora<span class="badge">Ongoing</span></h2><div class="meta"><b>Analysis and report</b> · DigiDhaara Foundation</div><p>Focus groups with SHG women and interviews with NRLM officials in the Takula and Dhaula Devi blocks of Uttarakhand, on phone ownership, banking, UPI and selling products online.</p></div></article>
+        <article><span class="yr">2022 – 24</span><div class="body"><h2>Assessment of Google Solutions for Education (AGSE)</h2><div class="meta"><b>Research design and analysis</b> · TISS with Google India</div><p>An assessment of a 1:1 Chromebook programme in secondary government schools in Gwalior and Indore. I drafted the research proposal, built the data collection tools and analysed classroom practice.</p></div></article>
+        <article><span class="yr">2022 – 24</span><div class="body"><h2>Digital Classroom Project, Madhya Pradesh</h2><div class="meta"><b>Led implementation and research</b> · TISS CETE</div><p>A study of engagement with digital classrooms in more than 60 upper primary and secondary government schools. I led field data collection and supervised the research team across both districts.</p></div></article>
+        <article><span class="yr">2019 – 25</span><div class="body"><h2>Integrated Approach to Technology in Education (ITE)</h2><div class="meta"><b>Researcher, then evaluation consultant</b> · TISS with Tata Trusts</div><p>A project-based learning programme in 100 government schools reaching 10,000+ children. I co-authored its outcome studies and later wrote the baseline, midline and endline reports, including coding skills and IT integration in flood-prone eastern Uttar Pradesh.</p><div class="links"><a href="https://doi.org/10.1111/bjet.13111" target="_blank" rel="noopener">BJET 2021</a><a href="https://doi.org/10.4324/9781003300274-7" target="_blank" rel="noopener">Routledge chapter 2022</a></div></div></article>
+        <article><span class="yr">2019 – 21</span><div class="body"><h2>Teacher communities on messaging platforms</h2><div class="meta"><b>Lead author</b> · TISS</div><p>How in-service government teachers used WhatsApp groups as communities of practice: who posted, who replied, and how activity followed the school calendar. This work later became the WhatsApp Chat Analyser.</p><div class="links"><a href="https://www.learntechlib.org/primary/p/220164/" target="_blank" rel="noopener">SITE 2021</a><a href="https://doi.org/10.1007/978-3-030-59847-1_8" target="_blank" rel="noopener">OCCE 2020</a></div></div></article>
+        <article><span class="yr">2020 – 21</span><div class="body"><h2>Open digital badges for teacher learning</h2><div class="meta"><b>Badge design and pilot</b> · TISS with The Open University, UK</div><p>Research on whether digital badges motivate teachers' professional learning. I helped design the badge specifications and piloted Badgr for credentialing at scale.</p><div class="links"><a href="https://oro.open.ac.uk/75653/" target="_blank" rel="noopener">Open University report 2021</a></div></div></article>
+        <article><span class="yr">2017 – 22</span><div class="body"><h2>CLIx and TISSx learning platforms</h2><div class="meta"><b>Platforms, tools and learning analytics</b> · TISS</div><p>I ran the Open edX platforms behind CLIx and TISSx, wrote JavaScript tools for maths modules on linear equations and proportional reasoning, trained government teachers in Rajasthan, Chhattisgarh, Telangana and Mizoram, and analysed learner data from TISSx teacher courses.</p></div></article>
+      </div>
+    </div></div>
+  </div>
 
-            const Inquiries = () => (
-                <div className="space-y-10 animate-in">
-                    <h2 className="text-3xl font-serif text-slate-900">Selected Implementations</h2>
-                    <div className="space-y-12">
-                        {[
-                            {
-                                title: "Scaling Digital Learning Frameworks",
-                                context: "Public Education Systems",
-                                description: "Implementation of technology-enabled professional development across 60+ government schools. This inquiry focused on the tension between centralized digital mandates and local classroom realities.",
-                                tags: ["Field Research", "DPI", "EdTech"]
-                            },
-                            {
-                                title: "Socio-Technical Network Analysis",
-                                context: "Graph Databases & Education",
-                                description: "Investigating the technical feasibility of migrating open-source knowledge projects to Neo4j. Developing visualizations to understand complex relational data in educational modeling.",
-                                tags: ["Neo4j", "Python", "Data Modeling"]
-                            },
-                            {
-                                title: "Digital Micro-credentials",
-                                context: "Teacher Professional Development",
-                                description: "Collaborative research on the motivational impact of digital badges. Piloting large-scale credentialing frameworks to bridge formal and informal learning paths.",
-                                tags: ["Badgr", "Learning Analytics", "Global South"]
-                            }
-                        ].map((proj, i) => (
-                            <div key={i} className="group cursor-default">
-                                <span className="text-xs font-mono text-slate-400 mb-2 block">{proj.context}</span>
-                                <h3 className="text-xl font-medium text-slate-900 mb-3 group-hover:text-blue-900 transition-colors">{proj.title}</h3>
-                                <p className="text-slate-600 mb-4 max-w-3xl leading-relaxed font-light">{proj.description}</p>
-                                <div className="flex gap-2">
-                                    {proj.tags.map(tag => (
-                                        <span key={tag} className="text-[10px] px-2 py-1 bg-slate-50 border border-slate-100 text-slate-500 rounded-full tracking-wider uppercase">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            );
+  <!-- ================= PUBLICATIONS ================= -->
+  <div class="page" data-page="publications" hidden>
+    <div class="band flat-top"><div class="wrap">
+      <div class="pagehead"><h1>Publications</h1><p>ORCID <a href="https://orcid.org/0000-0003-0709-2174" target="_blank" rel="noopener">0000-0003-0709-2174</a></p></div>
+      <ol class="pubs">
+        <li><span class="yr">2023</span><div class="cite"><span class="kind">Journal</span>Charania, A., <b>Sumegh P</b>, Sen, S., Sarkar, D., &amp; Bakshani, U. <span class="t">Leading edge use of technology for teacher professional development in Indian schools.</span> <em>Education Sciences</em>, 13(4), 386. <a class="doi" href="https://doi.org/10.3390/educsci13040386" target="_blank" rel="noopener">doi:10.3390/educsci13040386</a></div></li>
+        <li><span class="yr">2022</span><div class="cite"><span class="kind">Chapter</span>Charania, A., <b>Sumegh P</b>, Avadhanam, R., &amp; Bakshani, U. <span class="t">Findings from outcome studies.</span> In <em>Integrated Approach to Technology in Education in India: Implementation and Impact</em>. Routledge. <a class="doi" href="https://doi.org/10.4324/9781003300274-7" target="_blank" rel="noopener">doi:10.4324/9781003300274-7</a></div></li>
+        <li><span class="yr">2021</span><div class="cite"><span class="kind">Journal</span>Charania, A., Bakshani, U., <b>Sumegh P</b>, Kaur, I., &amp; Nasrin, N. <span class="t">Constructivist teaching and learning with technologies in the COVID-19 lockdown in Eastern India.</span> <em>British Journal of Educational Technology</em>. <a class="doi" href="https://doi.org/10.1111/bjet.13111" target="_blank" rel="noopener">doi:10.1111/bjet.13111</a></div></li>
+        <li><span class="yr">2021</span><div class="cite"><span class="kind">Report</span>Cross, S., Adinolfi, L., Charania, A., <b>Sumegh P</b>, Wolfenden, F., et al. <span class="t">Teachers' professional learning during and after Covid: a role for open digital badges.</span> The Open University. <a class="doi" href="https://oro.open.ac.uk/75653/" target="_blank" rel="noopener">oro.open.ac.uk/75653</a></div></li>
+        <li><span class="yr">2021</span><div class="cite"><span class="kind">Conference</span><b>Sumegh P</b>, &amp; Charania, A. <span class="t">Understanding the teacher participation and interaction over technology-enabled CoP.</span> <em>Proceedings of SITE Interactive Conference</em>, 44–48. AACE. <a class="doi" href="https://www.learntechlib.org/primary/p/220164/" target="_blank" rel="noopener">learntechlib.org/p/220164</a></div></li>
+        <li><span class="yr">2020</span><div class="cite"><span class="kind">Conference</span><b>Sumegh P</b>, Sarkar, D., &amp; Charania, A. <span class="t">Use of community of practice for in-service government teachers in professional development.</span> <em>Open Conference on Computers in Education (OCCE)</em>, 73–77. Springer. <a class="doi" href="https://doi.org/10.1007/978-3-030-59847-1_8" target="_blank" rel="noopener">doi:10.1007/978-3-030-59847-1_8</a></div></li>
+        <li><span class="yr">2018</span><div class="cite"><span class="kind">Poster</span>Dhakulkar, A., &amp; <b>Sumegh P</b> <span class="t">Designing an interactive and collaborative environment for learning linear equations.</span> CLIx Symposium, Tata Institute of Social Sciences, Mumbai.</div></li>
+      </ol>
+    </div></div>
+  </div>
 
-            const Archive = () => (
-                <div className="space-y-10 animate-in">
-                    <div className="flex justify-between items-end border-b border-slate-100 pb-4">
-                        <h2 className="text-3xl font-serif text-slate-900">Research Archive</h2>
-                        <span className="text-slate-400 text-sm font-light italic">Peer-reviewed publications</span>
-                    </div>
-                    
-                    <div className="space-y-8">
-                        <section className="space-y-4">
-                            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold">Journal Articles & Chapters</h3>
-                            {[
-                                { year: "2023", title: "Leading Edge Use of Technology for Teacher Professional Development", journal: "Education Sciences", url: "https://doi.org/10.3390/educsci13040386" },
-                                { year: "2022", title: "Integrated Approach to Technology in Education in India", journal: "Taylor & Francis", url: "https://doi.org/10.4324/97810033300274" },
-                                { year: "2021", title: "Constructivist teaching and learning with technologies", journal: "British Journal of Educational Technology", url: "https://doi.org/10.1111/bjet.13111" }
-                            ].map((pub, i) => (
-                                <div key={i} className="flex gap-6 items-start group">
-                                    <span className="text-sm font-mono text-slate-300 pt-1">{pub.year}</span>
-                                    <div className="flex-1">
-                                        <a href={pub.url} target="_blank" rel="noopener noreferrer" className="text-slate-900 font-medium hover:text-blue-700 hover:underline cursor-pointer decoration-slate-300 flex items-center gap-2">
-                                            {pub.title}
-                                            <Icon name="external-link" className="w-3 h-3 text-slate-300" />
-                                        </a>
-                                        <p className="text-sm text-slate-500">{pub.journal}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </section>
-                    </div>
-                </div>
-            );
+  <!-- ================= TOOLS ================= -->
+  <div class="page" data-page="tools" hidden>
+    <div class="band flat-top"><div class="wrap">
+      <div class="pagehead"><h1>Recent tools</h1><p>Small tools I have built, for my own research and for the research community.</p></div>
+      <div class="tools">
+        <article><div class="chip" style="background:var(--green)"></div><h2>WhatsApp Chat Analyser</h2><p>Turns an exported WhatsApp chat into activity charts, a reply network and measures of conversation dynamics such as turn-taking, burstiness and weekly routine. It grew out of my study of teacher communities. The chat never leaves your device.</p><div class="links"><a href="https://sumeghhp.gitlab.io/whatsapp_plots/" target="_blank" rel="noopener">Open the tool</a></div></article>
+        <article><div class="chip" style="background:var(--blue)"></div><h2>T4E Format Check</h2><p>Checks a paper against the Springer proceedings template before submission: page limits by paper type, author block, ORCID check digits, headings, figures and references, with plain-language fixes.</p><div class="links"><a href="https://sumeghp.github.io/t4e-format-checker/" target="_blank" rel="noopener">Open the tool</a><a href="https://github.com/sumeghp/t4e-format-checker" target="_blank" rel="noopener">Source code</a></div></article>
+      </div>
+    </div></div>
+  </div>
 
-            const Pedagogy = () => (
-                <div className="space-y-10 animate-in">
-                    <h2 className="text-3xl font-serif text-slate-900">Academic Service & Instruction</h2>
-                    <div className="grid md:grid-cols-2 gap-12">
-                        <div className="space-y-6">
-                            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold">Instruction</h3>
-                            <ul className="space-y-4">
-                                <li className="flex gap-4">
-                                    <span className="h-2 w-2 rounded-full bg-slate-900 mt-2 shrink-0"></span>
-                                    <div>
-                                        <p className="font-medium text-slate-900">Machine Learning</p>
-                                        <p className="text-sm text-slate-500 font-light">Teaching Fellow for graduate-level courses focusing on algorithmic foundations.</p>
-                                    </div>
-                                </li>
-                                <li className="flex gap-4">
-                                    <span className="h-2 w-2 rounded-full bg-slate-900 mt-2 shrink-0"></span>
-                                    <div>
-                                        <p className="font-medium text-slate-900">Algorithms & Python</p>
-                                        <p className="text-sm text-slate-500 font-light">Foundational instruction for M.Sc. Computer Science candidates.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="space-y-6">
-                            <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold">Editorial & Committees</h3>
-                            <ul className="space-y-4">
-                                <li className="flex gap-4">
-                                    <span className="h-2 w-2 rounded-full bg-slate-300 mt-2 shrink-0"></span>
-                                    <div>
-                                        <p className="font-medium text-slate-900 text-sm">Editorial Board Member</p>
-                                        <p className="text-sm text-slate-500 italic">Critical Digital Humanities Journal (CDH)</p>
-                                    </div>
-                                </li>
-                                <li className="flex gap-4">
-                                    <span className="h-2 w-2 rounded-full bg-slate-300 mt-2 shrink-0"></span>
-                                    <div>
-                                        <p className="font-medium text-slate-900 text-sm">Peer Reviewer</p>
-                                        <p className="text-sm text-slate-500 italic">Education and Information Technologies (Springer)</p>
-                                    </div>
-                                </li>
-                                <li className="flex gap-4">
-                                    <span className="h-2 w-2 rounded-full bg-slate-300 mt-2 shrink-0"></span>
-                                    <div>
-                                        <p className="font-medium text-slate-900 text-sm">Conference Coordination</p>
-                                        <p className="text-sm text-slate-500 italic">T4E 2025 Program Administration</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            );
+  <!-- ================= WORK WITH ME ================= -->
+  <div class="page" data-page="work" hidden>
+    <div class="band flat-top"><div class="wrap">
+      <div class="pagehead"><h1>Work with me</h1><p>I take on consulting work where careful fieldwork and good data both matter. Remote, or in the field anywhere in India.</p></div>
+      <div class="offers">
+        <article><h2>Programme evaluation</h2><p>Baseline, midline and endline studies with instruments, sampling, field plans and reports that funders and governments can use.</p></article>
+        <article><h2>Mixed-methods research</h2><p>Surveys, focus groups and interviews, coded in MAXQDA or Atlas.ti, with statistics in Stata, SPSS or Python.</p></article>
+        <article><h2>Learning data and analytics</h2><p>Learning-platform logs, engagement measures and analysis of messaging-group data, turned into findings people can act on.</p></article>
+        <article><h2>Research tools</h2><p>Small web tools built for one study's question, private by design, documented so your team can keep using them.</p></article>
+      </div>
+      <a href="#contact">Discuss a project →</a>
+    </div></div>
+  </div>
 
-            return (
-                <div className="min-h-screen bg-white text-slate-900 selection:bg-slate-200">
-                    <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-16">
-                        <aside className="md:w-48 space-y-12">
-                            <div className="space-y-1">
-                                <h1 className="text-xl font-serif font-bold tracking-tight text-slate-900">sumegh p.</h1>
-                                <p className="text-xs font-mono text-slate-400 uppercase tracking-widest">Researcher</p>
-                            </div>
+  <!-- ================= CONTACT ================= -->
+  <div class="page" data-page="contact" hidden>
+    <div class="band flat-top"><div class="wrap contact">
+      <div class="pagehead" style="margin-bottom:0"><h1>Contact</h1></div>
+      <div class="email-row">
+        <span class="email" id="email">sumegh.connect@gmail.com</span>
+        <button class="btn" type="button" id="copy">Copy address</button>
+        <span class="note" id="copynote" role="status" aria-live="polite"></span>
+      </div>
+      <ul class="elsewhere">
+        <li><span class="k">ORCID</span><a href="https://orcid.org/0000-0003-0709-2174" target="_blank" rel="noopener">0000-0003-0709-2174</a></li>
+        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/sumeghhp" target="_blank" rel="noopener">in/sumeghhp</a></li>
+        <li><span class="k">GitHub</span><a href="https://github.com/sumeghp" target="_blank" rel="noopener">sumeghp</a></li>
+        <li><span class="k">GitLab</span><a href="https://gitlab.com/sumeghhp" target="_blank" rel="noopener">sumeghhp</a></li>
+        <li><span class="k">Based in</span><span>Delhi NCR, India</span></li>
+      </ul>
+    </div></div>
+  </div>
+</main>
 
-                            <nav className="flex flex-col gap-4">
-                                {navItems.map(item => (
-                                    <button
-                                        key={item.id}
-                                        onClick={() => setActiveTab(item.id)}
-                                        className={`flex items-center gap-3 text-sm transition-all hover:translate-x-1 ${
-                                            activeTab === item.id 
-                                                ? 'text-slate-900 font-medium' 
-                                                : 'text-slate-400 font-light'
-                                        }`}
-                                    >
-                                        <span className={`h-1 w-1 rounded-full ${activeTab === item.id ? 'bg-slate-900' : 'bg-transparent'}`}></span>
-                                        {item.label}
-                                    </button>
-                                ))}
-                            </nav>
+<footer class="foot">
+  <div class="band">
+    <div class="wrap">
+      <a class="tile" href="#about">Open to PhD positions, 2027</a>
+      <p>© 2026 Sumegh P. Write to sumegh.connect@gmail.com for a full CV.</p>
+    </div>
+  </div>
+</footer>
 
-                            <div className="pt-12 space-y-4 border-t border-slate-50">
-                                <a href="#" className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-900 transition-colors">
-                                    <Icon name="file-text" className="w-3 h-3" />
-                                    Download CV (PDF)
-                                </a>
-                                <a href="mailto:sumegh.connect@gmail.com" className="flex items-center gap-2 text-xs text-slate-400 hover:text-slate-900 transition-colors">
-                                    <Icon name="mail" className="w-3 h-3" />
-                                    Get in touch
-                                </a>
-                                <div className="flex gap-3 pt-2 text-slate-300">
-                                    <a href="https://orcid.org/0000-0003-0709-2174" target="_blank" rel="noopener noreferrer">
-                                        <Icon name="external-link" className="w-3 h-3 cursor-pointer hover:text-slate-900" title="ORCID" />
-                                    </a>
-                                    <a href="https://linkedin.com/in/sumeghhp" target="_blank" rel="noopener noreferrer">
-                                        <Icon name="external-link" className="w-3 h-3 cursor-pointer hover:text-slate-900" title="LinkedIn" />
-                                    </a>
-                                </div>
-                            </div>
-                        </aside>
+<script>
+(function () {
+  /* page switching */
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.menu a[href^="#"]'));
+  function route() {
+    var id = (location.hash || '#home').slice(1);
+    if (!pages.some(function (p) { return p.dataset.page === id; })) id = 'home';
+    pages.forEach(function (p) { p.hidden = p.dataset.page !== id; });
+    navLinks.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
 
-                        <main className="flex-1 max-w-4xl pb-24">
-                            {activeTab === 'home' && <Home />}
-                            {activeTab === 'inquiries' && <Inquiries />}
-                            {activeTab === 'archive' && <Archive />}
-                            {activeTab === 'pedagogy' && <Pedagogy />}
-                        </main>
-                    </div>
+  /* filter the selected work grid by tag */
+  var items = Array.prototype.slice.call(document.querySelectorAll('#covers li'));
+  var bar = document.getElementById('filterbar');
+  var name = document.getElementById('filtername');
+  function filter(tag) {
+    items.forEach(function (li) { li.hidden = tag && li.dataset.tags.split(' ').indexOf(tag) === -1; });
+    bar.hidden = !tag;
+    name.textContent = tag || '';
+  }
+  document.querySelectorAll('[data-tag]').forEach(function (b) {
+    b.addEventListener('click', function () { filter(b.dataset.tag); });
+  });
+  document.getElementById('clearfilter').addEventListener('click', function () { filter(null); });
 
-                    <footer className="max-w-6xl mx-auto px-6 py-8 border-t border-slate-50 flex justify-between items-center text-[10px] text-slate-300 uppercase tracking-widest">
-                        <span>© 2026 Sumegh P.</span>
-                        <span>Independent Research | Socio-Technical Design</span>
-                    </footer>
-                </div>
-            );
-        };
+  /* circuit that turns into an interlocking pattern */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cv = document.getElementById('tess'), ctx = cv.getContext('2d');
+  var mx = 0.45, target = 0.45, auto = true, inv = false, dpr = 1, now = 0;
+  var orient = [], seed = 20261017;
+  function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+  for (var q = 0; q < 1600; q++) orient.push(rnd() < 0.5 ? 0 : 1);
+  function size() {
+    var w = cv.clientWidth || 400;
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    cv.width = Math.round(w * dpr); cv.height = Math.round(w * 1.2 * dpr);
+  }
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function smooth(v) { v = clamp(v); return v * v * (3 - 2 * v); }
+  function hex(h) { return [parseInt(h.substr(1, 2), 16), parseInt(h.substr(3, 2), 16), parseInt(h.substr(5, 2), 16)]; }
+  function mix(a, b, t) { var A = hex(a), B = hex(b); return 'rgb(' + Math.round(A[0] + (B[0] - A[0]) * t) + ',' + Math.round(A[1] + (B[1] - A[1]) * t) + ',' + Math.round(A[2] + (B[2] - A[2]) * t) + ')'; }
+  /* one connector between two edge midpoints, curling round a corner: right angle (a=0) to quarter circle (a=1) */
+  function connector(s, corner, a, N) {
+    var pts = [], r = s / 2;
+    /* circuit route: straight, a 45 degree bend, straight, like a board trace */
+    var P = [[r, 0], [r, r * 0.45], [r * 0.45, r], [0, r]];
+    var L = [], tot = 0;
+    for (var m = 0; m < 3; m++) { var d = Math.hypot(P[m + 1][0] - P[m][0], P[m + 1][1] - P[m][1]); L.push(d); tot += d; }
+    for (var k = 0; k <= N; k++) {
+      var u = k / N, th = u * Math.PI / 2;
+      var ax = r * Math.cos(th), ay = r * Math.sin(th);
+      var dist = u * tot, seg = 0;
+      while (seg < 2 && dist > L[seg]) { dist -= L[seg]; seg++; }
+      var f = L[seg] ? dist / L[seg] : 0;
+      var lx = P[seg][0] + (P[seg + 1][0] - P[seg][0]) * f, ly = P[seg][1] + (P[seg + 1][1] - P[seg][1]) * f;
+      var x = lx + (ax - lx) * a, y = ly + (ay - ly) * a;
+      if (corner === 1 || corner === 3) x = s - x;
+      if (corner === 2 || corner === 3) y = s - y;
+      pts.push([x, y]);
+    }
+    return pts;
+  }
+  var CORNERS = [[0, 0], [1, 0], [0, 1], [1, 1]];
+  function draw() {
+    var W = cv.width, H = cv.height, cols = 7, s = Math.ceil(W / cols), rows = Math.ceil(H / s) + 1, N = 16;
+    var INK = inv ? '#F1EFE8' : '#1B1B1D', PAPER = inv ? '#1B1B1D' : '#F1EFE8', BOARD = '#26272B';
+    ctx.clearRect(0, 0, W, H);
+    for (var j = 0; j < rows; j++) {
+      for (var i = 0; i < cols; i++) {
+        var x0 = i * s, y0 = j * s;
+        var a = smooth(((x0 + s / 2) / W - mx) * 2.6 + 0.5);
+        var o = orient[(j * 40 + i) % orient.length];
+        var corners = o === 0 ? [0, 3] : [1, 2];
+        var cornerPar = (i + j + (o === 0 ? 0 : 1)) % 2, bandPar = 1 - cornerPar;
+        var colOf = function (p) { return mix(BOARD, p === 0 ? INK : PAPER, a); };
+        ctx.save(); ctx.translate(x0, y0);
+        ctx.fillStyle = colOf(bandPar); ctx.fillRect(0, 0, s, s);
+        var paths = corners.map(function (c) { return { c: c, p: connector(s, c, a, N) }; });
+        paths.forEach(function (P) {
+          var cx = CORNERS[P.c][0] * s, cy = CORNERS[P.c][1] * s;
+          ctx.beginPath(); ctx.moveTo(cx, cy);
+          P.p.forEach(function (pt) { ctx.lineTo(pt[0], pt[1]); });
+          ctx.closePath(); ctx.fillStyle = colOf(cornerPar); ctx.fill();
+        });
+        /* traces */
+        ctx.lineWidth = (1.5 + a * 0.6) * dpr; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+        ctx.strokeStyle = mix('#CFC9BB', '#7F7B72', a);
+        paths.forEach(function (P) { ctx.beginPath(); P.p.forEach(function (pt, k) { k ? ctx.lineTo(pt[0], pt[1]) : ctx.moveTo(pt[0], pt[1]); }); ctx.stroke(); });
+        /* circuit details fade out as the pattern takes over */
+        var c = clamp((0.6 - a) / 0.6);
+        if (c > 0) {
+          ctx.globalAlpha = c; ctx.fillStyle = '#CFC9BB';
+          var pd = s * 0.06;
+          [[s / 2, 0], [s, s / 2], [s / 2, s], [0, s / 2]].forEach(function (m) { ctx.fillRect(m[0] - pd / 2, m[1] - pd / 2, pd, pd); });
+          if ((i * 31 + j * 17) % 5 === 0) {
+            var cw = s * 0.26, chh = s * 0.18;
+            ctx.fillStyle = '#0F0F11'; ctx.fillRect(s / 2 - cw / 2, s / 2 - chh / 2, cw, chh);
+            ctx.strokeStyle = '#CFC9BB'; ctx.lineWidth = 1 * dpr; ctx.strokeRect(s / 2 - cw / 2, s / 2 - chh / 2, cw, chh);
+            ctx.fillStyle = '#CFC9BB';
+            for (var pn = 0; pn < 4; pn++) { var px = s / 2 - cw / 2 + cw * (pn + 0.5) / 4 - 1.5 * dpr; ctx.fillRect(px, s / 2 - chh / 2 - 4 * dpr, 3 * dpr, 4 * dpr); ctx.fillRect(px, s / 2 + chh / 2, 3 * dpr, 4 * dpr); }
+          }
+          /* signal pulses along the traces */
+          paths.forEach(function (P, idx) {
+            var ph = ((now / 1700) + ((i * 7 + j * 13 + idx * 5) % 10) / 10) % 1;
+            var pt = P.p[Math.round(ph * N)];
+            ctx.fillStyle = '#FFF4D6'; ctx.beginPath(); ctx.arc(pt[0], pt[1], s * 0.045, 0, Math.PI * 2); ctx.fill();
+          });
+          ctx.globalAlpha = 1;
+        }
+        ctx.restore();
+      }
+    }
+  }
+  function loop(t) {
+    now = t;
+    if (auto) target = 0.45 + 0.3 * Math.sin(t / 2800);
+    mx += (target - mx) * 0.08;
+    draw();
+    requestAnimationFrame(loop);
+  }
+  size();
+  window.addEventListener('resize', function () { size(); if (reduce) draw(); });
+  cv.addEventListener('pointermove', function (e) {
+    var r = cv.getBoundingClientRect(); auto = false; target = (e.clientX - r.left) / r.width;
+    if (reduce) { mx = target; draw(); }
+  });
+  cv.addEventListener('pointerleave', function () { auto = true; });
+  document.getElementById('invert').addEventListener('click', function () { inv = !inv; draw(); });
+  if (reduce) draw(); else requestAnimationFrame(loop);
 
-        // Render the app
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+  /* copy email */
+  var copy = document.getElementById('copy'), note = document.getElementById('copynote'), email = document.getElementById('email');
+  copy.addEventListener('click', function () {
+    var done = function () { note.textContent = 'Copied'; setTimeout(function () { note.textContent = ''; }, 2000); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      note.textContent = 'Selected. Press Ctrl+C or Cmd+C to copy.';
+    };
+    try { navigator.clipboard.writeText(email.textContent.trim()).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+
 </body>
 </html>
