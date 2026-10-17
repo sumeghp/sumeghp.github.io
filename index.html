@@ -55,7 +55,9 @@ a:hover { color: var(--rose); }
 .logo .plane { position: absolute; inset: 0; background: var(--ochre); clip-path: polygon(0 0, 100% 16%, 100% 100%, 0 82%); }
 .logo .word { position: absolute; left: 40px; top: 78px; font-family: var(--sans); font-weight: 700; font-size: 3rem; letter-spacing: -0.02em; line-height: 1; color: var(--on-light); white-space: nowrap; }
 .logo .word span { color: var(--blue); }
-.logo:hover .plane { background: var(--rose); }
+.logo:hover .plane { background: var(--crimson); }
+.logo:hover .word { color: var(--on-dark); }
+.logo:hover .word span { color: var(--ochre); }
 .menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 32px; padding-top: 28px; }
 .menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; align-content: start; }
 .menu a { color: var(--ink); text-decoration: none; font-size: 0.98rem; display: inline-flex; align-items: center; gap: 8px; }
@@ -198,7 +200,7 @@ a:hover { color: var(--rose); }
 .foot { margin-top: 90px; }
 .foot .band { padding-block: 110px 70px; clip-path: polygon(0 70px, 100% 0, 100% 100%, 0 100%); }
 .foot .wrap { display: flex; flex-wrap: wrap; gap: 36px; justify-content: flex-end; align-items: center; }
-.foot .tile { display: block; width: 150px; height: 130px; background: var(--rose); clip-path: polygon(0 14%, 100% 0, 100% 86%, 0 100%); color: var(--on-light); text-decoration: none; padding: 34px 18px; font-size: 1.05rem; line-height: 1.25; }
+.foot .tile { display: block; width: 150px; height: 130px; background: var(--crimson); clip-path: polygon(0 14%, 100% 0, 100% 86%, 0 100%); color: var(--on-dark); text-decoration: none; padding: 34px 18px; font-size: 1.05rem; line-height: 1.25; }
 .foot .tile:hover { background: var(--ochre); color: var(--on-light); }
 .foot p { max-width: 36ch; font-size: 0.92rem; color: var(--muted); margin: 0; }
 
