@@ -27,6 +27,7 @@ img { max-width: 100%; }
   --ochre: #D39A2E;
   --rose: #D9776A;
   --green: #2F6B57;
+  --crimson: #9E2A2B;
   --night: #17181D;
   --paper: #F6F4EE;
   --on-dark: #F7F4EB;
@@ -143,6 +144,7 @@ a:hover { color: var(--rose); }
 .ledger .where { font-size: 0.88rem; color: var(--muted); }
 
 .quad { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; }
+.quad article:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .quad article { display: grid; gap: 8px; align-content: start; }
 .chip { width: 54px; height: 34px; clip-path: polygon(0 12%, 100% 0, 100% 88%, 0 100%); }
 .quad h2, .rows h2, .tools h2, .offers h2 { font-family: var(--sans); font-weight: 600; font-size: 1.18rem; line-height: 1.3; margin: 0; }
@@ -406,12 +408,13 @@ a:hover { color: var(--rose); }
   <!-- ================= RESEARCH ================= -->
   <div class="page" data-page="research" hidden>
     <div class="band flat-top"><div class="wrap">
-      <div class="pagehead"><h1>Research</h1><p>Four questions I keep returning to.</p></div>
+      <div class="pagehead"><h1>Research</h1><p>Five questions I keep returning to.</p></div>
       <div class="quad">
-        <article><div class="chip" style="background:var(--blue)"></div><h2>Thinking agency and generative AI</h2><p>When students read and write with AI, who is doing the knowing? I am interested in cognitive offloading and in how learners keep ownership of their own thinking.</p></article>
-        <article><div class="chip" style="background:var(--ochre)"></div><h2>Learning where resources are thin</h2><p>Devices, connectivity and language in government schools and rural communities across the Global South, and who gets left out when a technology arrives.</p></article>
-        <article><div class="chip" style="background:var(--green)"></div><h2>Platforms and online communities</h2><p>How people build communities on messaging and social platforms: who speaks, who replies, and how the rhythm of a group follows the rhythm of their lives.</p></article>
-        <article><div class="chip" style="background:var(--rose)"></div><h2>Culture, creativity and heritage</h2><p>Computational methods for reading images, film and archives, used to explain why certain forms move people.</p></article>
+        <article><div class="chip" style="background:var(--blue)"></div><h2>Thinking agency and generative AI</h2><p>When learners read, write and reason with AI, who is doing the knowing? I am interested in cognitive offloading, and in how learners and users keep ownership of their own thinking.</p></article>
+        <article><div class="chip" style="background:var(--crimson)"></div><h2>Connectivism and connected learning</h2><p>Learning now happens across networks of people, platforms and machines rather than inside one classroom. I ask how knowledge forms and travels through these networks, and what changes when AI becomes one of the connections.</p></article>
+        <article><div class="chip" style="background:var(--ochre)"></div><h2>Learning where resources are thin</h2><p>Devices, connectivity and language in government schools and rural communities across the Global South, and who is left out when a new technology arrives.</p></article>
+        <article><div class="chip" style="background:var(--green)"></div><h2>Platforms and online communities</h2><p>How users build communities on messaging and social platforms: who speaks, who replies, and how the rhythm of a group follows the rhythm of their lives.</p></article>
+        <article><div class="chip" style="background:var(--rose)"></div><h2>Culture, creativity and heritage</h2><p>Computational methods for reading images, film and archives, to understand why certain forms move people.</p></article>
       </div>
     </div></div>
   </div>
