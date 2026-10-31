@@ -9,6 +9,7 @@ body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 </style>
+<script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <title>Sumegh P</title>
 <meta name="description" content="Sumegh P studies how digital systems change the way people learn and think, and builds the tools to see it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,6 +65,12 @@ a:hover { color: var(--rose); }
 .menu a:hover, .menu a[aria-current="page"] { color: var(--rose); }
 .menu a[aria-current="page"] { font-weight: 600; }
 .menu .ext::before { content: ""; width: 9px; height: 9px; background: var(--blue); clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%); flex: none; }
+
+/* ---------- Theme toggle ---------- */
+.masthead { position: relative; }
+.theme-toggle { position: absolute; top: max(10px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); width: 28px; height: 28px; padding: 0; border: 0; background: none; color: var(--muted); cursor: pointer; display: grid; place-items: center; z-index: 5; }
+.theme-toggle::before { content: ""; width: 13px; height: 13px; border: 1.5px solid currentColor; border-radius: 50%; background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+.theme-toggle:hover { color: var(--ochre); }
 
 /* ---------- Slanted band ---------- */
 .band { background: var(--band); clip-path: polygon(0 70px, 100% 0, 100% calc(100% - 70px), 0 100%); padding-block: 120px 130px; }
@@ -237,6 +244,7 @@ a:hover { color: var(--rose); }
 </head>
 <body>
 <header class="masthead">
+  <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"></button>
   <div class="wrap">
     <a class="logo" href="#home" aria-label="Sumegh P, home">
       <span class="plane" aria-hidden="true"></span>
@@ -663,5 +671,23 @@ a:hover { color: var(--rose); }
 })();
 </script>
 
+<script>
+(function () {
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function current() { return root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light'); }
+  function label() { var next = current() === 'dark' ? 'light' : 'dark'; btn.setAttribute('aria-label', 'Switch to ' + next + ' mode'); btn.title = 'Switch to ' + next + ' mode'; }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    label();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener('change', label);
+  label();
+})();
+</script>
 </body>
 </html>
